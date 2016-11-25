@@ -1,12 +1,15 @@
+import java.util.ArrayList;
+
 public class Register{
 	
 	private String name;
 	private String DOB;
 	private int age;
-        
+     private final ArrayList <Register>Customer = new ArrayList<>();    
 
     public Register() {
     	this("No name", "None", 0);
+    	Customer.add(this);
     }
 
     public Register(String name, String DOB, int age) {

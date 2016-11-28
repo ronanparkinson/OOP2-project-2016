@@ -6,7 +6,6 @@ public class Concert{
     private String type;
     private String venue;
     private int capacity;
-    //private Ticket[] tickets;
     private String date; 
     private final ArrayList <Concert>Concerts = new ArrayList<>();   
 
@@ -23,7 +22,6 @@ public class Concert{
         this.name = name;
     	this.type = type;
     	this.venue = venue;
-    //	this.tickets = new Ticket[capacity];
     	this.capacity = capacity;
     	this.date = date;
     	
@@ -54,11 +52,6 @@ public class Concert{
     	return date;
     }
     
-   /* public Ticket[] gettickets(){
-    	
-    	return tickets;
-    }*/
-    
     public void setname(String name){
     	
     	this.name = name;
@@ -73,12 +66,6 @@ public class Concert{
     	
     	this.venue = venue;
     }
-
-    
-  /*  public void settickets(Ticket[] tickets){
-    	
-    	this.tickets = tickets;
-    }*/
     
     public void setcapacity(int capacity){
     	

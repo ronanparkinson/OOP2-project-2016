@@ -80,24 +80,22 @@ public class GUI extends JFrame{
 			ArrayList <Concert> Concerts = new ArrayList<Concert>();
 			String item = e.getActionCommand();	
 			JTextArea text;
-			//JTextArea textarea = new JTextArea(2, 25);
 				
-				if(item.equals("Add Concert")){
+			if(item.equals("Add Concert")){
 				
-				JFrame addWindow = new JFrame("Add a Concert");
-				this.setSize(600, 600);
+				JFrame addWindow = new JFrame();
+				this.setSize(600, 300);
+				setLayout(new FlowLayout());
 				this.setVisible(true);
 				this.setTitle("Add a customer");
 				this.setResizable(false);
-				JTextArea textArea1 = new JTextArea();
-				textArea1.setEditable(false);
 				Font font = new Font("Sans Serif", Font.PLAIN, 25);
-				textArea1.setFont(font);
-				textArea1.append("Concert name: ");
-				JButton button = new JButton("Hello");
-				this.add(textArea1);
-				//this.setLayout(new BorderLayout());
 				
+				JLabel label1 = new JLabel("Concert name: ");
+				label1.setFont(font);
+				this.add(label1);
+				JTextField Cname = new JTextField(20);
+				add(Cname);				
 				Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
     			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
     			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
@@ -107,7 +105,7 @@ public class GUI extends JFrame{
 				} 
 				else if(item.equals("Search Concert")){
 					
-					JFrame searchWindow = new JFrame("Add a Concert");	
+					JFrame searchWindow = new JFrame();	
 					this.setSize(600, 600);
 					this.setVisible(true);
 					this.setTitle("Search for customer");
@@ -123,7 +121,7 @@ public class GUI extends JFrame{
 				
 				else if(item.equals("Remove Concert")){
 					
-					JFrame searchWindow = new JFrame("Remove a Concert");	
+					JFrame searchWindow = new JFrame();	
 					this.setSize(600, 600);
 					this.setVisible(true);
 					this.setTitle("Remove a  customer");
@@ -140,7 +138,7 @@ public class GUI extends JFrame{
 					
 				else if(item.equals("Add Customer")){
 					
-					JFrame searchWindow = new JFrame("Add a Customer");	
+					JFrame searchWindow = new JFrame();	
 					this.setSize(600, 600);
 					this.setVisible(true);
 					this.setTitle("Add a Customer");
@@ -157,7 +155,7 @@ public class GUI extends JFrame{
 				
 				else if(item.equals("Remove Customer")){
 					
-					JFrame searchWindow = new JFrame("Remove a Customer");	
+					JFrame searchWindow = new JFrame();	
 					this.setSize(600, 600);
 					this.setVisible(true);
 					this.setTitle("Remove a Customer");
@@ -173,7 +171,7 @@ public class GUI extends JFrame{
 				
 				else if(item.equals("Purchase Ticket")){
 					
-					JFrame searchWindow = new JFrame("Purchase a Ticket");	
+					JFrame searchWindow = new JFrame();	
 					this.setSize(600, 600);
 					this.setVisible(true);
 					this.setTitle("Purchase a Ticket");
@@ -189,7 +187,7 @@ public class GUI extends JFrame{
 				
 				else if(item.equals("Cancel Ticket")){
 					
-					JFrame searchWindow = new JFrame("Cancel a Ticket");	
+					JFrame searchWindow = new JFrame();	
 					this.setSize(600, 600);
 					this.setVisible(true);
 					this.setTitle("Cancel a Ticket");

@@ -3,7 +3,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+//import javax.swing.SwingUtilities;
 
 public class GUI extends JFrame{	 
 	public GUI(){
@@ -11,7 +12,7 @@ public class GUI extends JFrame{
 		super("Menu");		
 		JMenuBar menuBar = new JMenuBar();		
 		Container c = getContentPane();		
-		c.setBackground(Color.WHITE);
+		c.setBackground(Color.LIGHT_GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(850,650);
 		setResizable(false);
@@ -78,12 +79,24 @@ public class GUI extends JFrame{
 			public void actionPerformed(ActionEvent e){
 			ArrayList <Concert> Concerts = new ArrayList<Concert>();
 			String item = e.getActionCommand();	
+			JTextArea text;
+			//JTextArea textarea = new JTextArea(2, 25);
+				
 				if(item.equals("Add Concert")){
 				
 				JFrame addWindow = new JFrame("Add a Concert");
 				this.setSize(600, 600);
 				this.setVisible(true);
+				this.setTitle("Add a customer");
 				this.setResizable(false);
+				JTextArea textArea1 = new JTextArea();
+				textArea1.setEditable(false);
+				Font font = new Font("Sans Serif", Font.PLAIN, 25);
+				textArea1.setFont(font);
+				textArea1.append("Concert name: ");
+				JButton button = new JButton("Hello");
+				this.add(textArea1);
+				//this.setLayout(new BorderLayout());
 				
 				Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
     			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
@@ -91,6 +104,103 @@ public class GUI extends JFrame{
     			setLocation(x, y);
 				
 				
+				} 
+				else if(item.equals("Search Concert")){
+					
+					JFrame searchWindow = new JFrame("Add a Concert");	
+					this.setSize(600, 600);
+					this.setVisible(true);
+					this.setTitle("Search for customer");
+					this.setResizable(false);
+					//textarea.setText("Enter customer name: ");
+					this.setLayout(new BorderLayout());
+					
+					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
+	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
+	    			setLocation(x, y);
+				}
+				
+				else if(item.equals("Remove Concert")){
+					
+					JFrame searchWindow = new JFrame("Remove a Concert");	
+					this.setSize(600, 600);
+					this.setVisible(true);
+					this.setTitle("Remove a  customer");
+					this.setResizable(false);
+					//textarea.setText("Enter customer name: ");
+					this.setLayout(new BorderLayout());
+					
+					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
+	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
+	    			setLocation(x, y);
+					
+				}	
+					
+				else if(item.equals("Add Customer")){
+					
+					JFrame searchWindow = new JFrame("Add a Customer");	
+					this.setSize(600, 600);
+					this.setVisible(true);
+					this.setTitle("Add a Customer");
+					this.setResizable(false);
+					//textarea.setText("Enter customer name: ");
+					this.setLayout(new BorderLayout());
+					
+					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
+	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
+	    			setLocation(x, y);	
+					
+				}
+				
+				else if(item.equals("Remove Customer")){
+					
+					JFrame searchWindow = new JFrame("Remove a Customer");	
+					this.setSize(600, 600);
+					this.setVisible(true);
+					this.setTitle("Remove a Customer");
+					this.setResizable(false);
+					//textarea.setText("Enter customer name: ");
+					this.setLayout(new BorderLayout());
+					
+					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
+	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
+	    			setLocation(x, y);	
+				}
+				
+				else if(item.equals("Purchase Ticket")){
+					
+					JFrame searchWindow = new JFrame("Purchase a Ticket");	
+					this.setSize(600, 600);
+					this.setVisible(true);
+					this.setTitle("Purchase a Ticket");
+					this.setResizable(false);
+					//textarea.setText("Enter customer name: ");
+					this.setLayout(new BorderLayout());
+					
+					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
+	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
+	    			setLocation(x, y);
+				}
+				
+				else if(item.equals("Cancel Ticket")){
+					
+					JFrame searchWindow = new JFrame("Cancel a Ticket");	
+					this.setSize(600, 600);
+					this.setVisible(true);
+					this.setTitle("Cancel a Ticket");
+					this.setResizable(false);
+					//textarea.setText("Enter customer name: ");
+					this.setLayout(new BorderLayout());
+					
+					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
+	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
+	    			setLocation(x, y);
 				}
 			}
 		}

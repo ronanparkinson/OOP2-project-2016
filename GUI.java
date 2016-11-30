@@ -84,18 +84,45 @@ public class GUI extends JFrame{
 			if(item.equals("Add Concert")){
 				
 				JFrame addWindow = new JFrame();
-				this.setSize(600, 300);
+				this.setSize(450, 350);
 				setLayout(new FlowLayout());
 				this.setVisible(true);
-				this.setTitle("Add a customer");
+				this.setTitle("Add a concert");
 				this.setResizable(false);
 				Font font = new Font("Sans Serif", Font.PLAIN, 25);
 				
-				JLabel label1 = new JLabel("Concert name: ");
-				label1.setFont(font);
-				this.add(label1);
+				
+				JLabel Conname = new JLabel("Concert name:   ");
+				Conname.setFont(font);
+				this.add(Conname);
 				JTextField Cname = new JTextField(20);
-				add(Cname);				
+				this.add(Cname);
+				JLabel Contype = new JLabel("Concert type:   ");
+				JTextField Ctype = new JTextField(20);
+				this.add(Contype);
+				this.add(Ctype);
+				Contype.setFont(font);
+				JLabel Convenue = new JLabel("Concert Venue:  ");
+				JTextField venue = new JTextField(20);
+				this.add(Convenue);
+				this.add(venue);
+				Convenue.setFont(font);
+				JLabel Capacity = new JLabel("Concert Capacity:   ");
+				JTextField cap = new JTextField(17);
+				this.add(Capacity);
+				this.add(cap);	
+				Capacity.setFont(font);
+				JLabel date = new JLabel("Concert Date:   ");
+				JTextField when = new JTextField(20);
+				this.add(date);
+				this.add(when);	
+				date.setFont(font);
+				JButton subCon = new JButton("Submit");	
+				subCon.setPreferredSize(new Dimension(100, 60));
+				this.add(subCon);
+				JButton canCon = new JButton("Cancel");	
+				canCon.setPreferredSize(new Dimension(100, 60));
+				this.add(canCon);		
 				Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
     			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
     			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
@@ -106,12 +133,28 @@ public class GUI extends JFrame{
 				else if(item.equals("Search Concert")){
 					
 					JFrame searchWindow = new JFrame();	
-					this.setSize(600, 600);
+					this.setSize(700, 275);
+					setLayout(new FlowLayout());
 					this.setVisible(true);
 					this.setTitle("Search for customer");
 					this.setResizable(false);
-					//textarea.setText("Enter customer name: ");
-					this.setLayout(new BorderLayout());
+					Font font = new Font("Sans Serif", Font.PLAIN, 25);
+					JLabel Conname = new JLabel("Please enter the concert name: ");
+					JTextField name = new JTextField(20);
+					Conname.setFont(font);
+					this.add(Conname);
+					this.add(name); 
+					JLabel Condate = new JLabel("Please enter the concert date: ");
+					JTextField date = new JTextField(23);
+					Condate.setFont(font);
+					this.add(Condate);
+					this.add(date);
+					JButton subS = new JButton("Submit");	
+					subS.setPreferredSize(new Dimension(100, 60));
+					this.add(subS);
+					JButton canS = new JButton("Cancel");	
+					canS.setPreferredSize(new Dimension(100, 60));
+					this.add(canS);
 					
 					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
@@ -122,13 +165,23 @@ public class GUI extends JFrame{
 				else if(item.equals("Remove Concert")){
 					
 					JFrame searchWindow = new JFrame();	
-					this.setSize(600, 600);
+					this.setSize(600, 200);
 					this.setVisible(true);
-					this.setTitle("Remove a  customer");
+					this.setTitle("Remove a concert");
 					this.setResizable(false);
-					//textarea.setText("Enter customer name: ");
-					this.setLayout(new BorderLayout());
-					
+					setLayout(new FlowLayout());
+					JLabel removeCon = new JLabel("Please enter the concert name: ");
+					JTextField remove= new JTextField(20);
+					Font font = new Font("Sans Serif", Font.PLAIN, 25);
+					removeCon.setFont(font);
+					this.add(removeCon);
+					this.add(remove);
+					JButton removeButton = new JButton("Remove");
+					JButton removeCancel = new JButton("Cancel");
+					removeButton.setFont(font);
+					removeCancel.setFont(font);
+					this.add(removeButton);
+					this.add(removeCancel);
 					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
 	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
@@ -139,13 +192,36 @@ public class GUI extends JFrame{
 				else if(item.equals("Add Customer")){
 					
 					JFrame searchWindow = new JFrame();	
-					this.setSize(600, 600);
+					this.setSize(700, 250);
 					this.setVisible(true);
 					this.setTitle("Add a Customer");
 					this.setResizable(false);
-					//textarea.setText("Enter customer name: ");
-					this.setLayout(new BorderLayout());
-					
+					setLayout(new FlowLayout());
+					JLabel addCust = new JLabel("Customer's name: ");
+					JTextField add = new JTextField(20);
+					Font font = new Font("Sans Serif", Font.PLAIN, 25);
+					this.add(addCust);
+					this.add(add);
+					addCust.setFont(font);
+					add.setFont(font);
+					JLabel AddDob = new JLabel("Customer's DOB: ");
+					JTextField DOB = new JTextField(20);
+					this.add(AddDob);
+					this.add(DOB);
+					AddDob.setFont(font);
+					DOB.setFont(font);
+					JLabel Addaddress = new JLabel("Customer's Address: ");
+					JTextField Address = new JTextField(17);
+					this.add(Addaddress);
+					this.add(Address);
+					Addaddress.setFont(font);
+					Address.setFont(font);
+					JButton addButton = new JButton("Register");
+					JButton addCancel = new JButton("Cancel");
+					addButton.setFont(font);
+					addCancel.setFont(font);
+					this.add(addButton);
+					this.add(addCancel);
 					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
 	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);

@@ -192,7 +192,7 @@ public class GUI extends JFrame{
 				else if(item.equals("Add Customer")){
 					
 					JFrame searchWindow = new JFrame();	
-					this.setSize(700, 250);
+					this.setSize(700, 300);
 					this.setVisible(true);
 					this.setTitle("Add a Customer");
 					this.setResizable(false);
@@ -232,13 +232,29 @@ public class GUI extends JFrame{
 				else if(item.equals("Remove Customer")){
 					
 					JFrame searchWindow = new JFrame();	
-					this.setSize(600, 600);
+					this.setSize(950, 250);
 					this.setVisible(true);
 					this.setTitle("Remove a Customer");
-					this.setResizable(false);
-					//textarea.setText("Enter customer name: ");
-					this.setLayout(new BorderLayout());
-					
+					setLayout(new FlowLayout());
+					JLabel removeCust = new JLabel("Please enter the customer's name: ");
+					JTextField remove = new JTextField(20);
+					Font font = new Font("Sans Serif", Font.PLAIN, 25);
+					removeCust.setFont(font);
+					remove.setFont(font);
+					this.add(removeCust);
+					this.add(remove);
+					JLabel removeAddress = new JLabel("Please enter the customer's address: ");
+					JTextField removeAdd = new JTextField(20);
+					removeAddress.setFont(font);
+					removeAdd.setFont(font);
+					this.add(removeAddress);
+					this.add(removeAdd);
+					JButton RemoveButton = new JButton("Remove");
+					JButton ReCancel = new JButton("Cancel");
+					RemoveButton.setFont(font);
+					ReCancel.setFont(font);
+					this.add(RemoveButton);
+					this.add(ReCancel);
 					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
 	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
@@ -248,13 +264,28 @@ public class GUI extends JFrame{
 				else if(item.equals("Purchase Ticket")){
 					
 					JFrame searchWindow = new JFrame();	
-					this.setSize(600, 600);
+					this.setSize(950, 225);
 					this.setVisible(true);
 					this.setTitle("Purchase a Ticket");
+					setLayout(new FlowLayout());
 					this.setResizable(false);
-					//textarea.setText("Enter customer name: ");
-					this.setLayout(new BorderLayout());
-					
+					JLabel BuyTic = new JLabel("Please enter the Concert name: ");
+					JTextField BuyTicket = new JTextField(20);
+					Font font = new Font("Sans Serif", Font.PLAIN, 25);
+					BuyTic.setFont(font);
+					BuyTicket.setFont(font);
+					this.add(BuyTic);
+					this.add(BuyTicket);
+					JLabel TicQuan= new JLabel("Please enter the Concert name: ");
+					JTextField TicketQuan = new JTextField(25);
+					TicQuan.setFont(font);
+					TicketQuan.setFont(font);
+					this.add(TicQuan);
+					this.add(TicketQuan);
+					JButton purcButton = new JButton("Purchase");
+					JButton PurchaseCancel = new JButton("Cancel");
+					this.add(purcButton);
+					this.add(PurchaseCancel);
 					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
 	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
@@ -264,13 +295,34 @@ public class GUI extends JFrame{
 				else if(item.equals("Cancel Ticket")){
 					
 					JFrame searchWindow = new JFrame();	
-					this.setSize(600, 600);
+					this.setSize(925, 225);
 					this.setVisible(true);
 					this.setTitle("Cancel a Ticket");
 					this.setResizable(false);
-					//textarea.setText("Enter customer name: ");
-					this.setLayout(new BorderLayout());
-					
+					setLayout(new FlowLayout());
+					JLabel CanTic = new JLabel("Please enter the Concert name: ");
+					JTextField CancelTicket = new JTextField(20);
+					Font font = new Font("Sans Serif", Font.PLAIN, 25);
+					CanTic.setFont(font);
+					CancelTicket.setFont(font);
+					this.add(CanTic);
+					this.add(CancelTicket);
+					JLabel QuanTic = new JLabel("Please enter the number of tickets you purchased: ");
+					JTextField QuanTicket = new JTextField(15);
+					QuanTic.setFont(font);
+					QuanTicket.setFont(font);
+					this.add(QuanTic);
+					this.add(QuanTicket);
+					JLabel CustName = new JLabel("Please enter your name: ");
+					JTextField CustomerName = new JTextField(25);
+					CustName.setFont(font);
+					CustomerName.setFont(font);
+					this.add(CustName);
+					this.add(CustomerName);
+					JButton CanButton = new JButton("Refund");
+					JButton PurchaseCancel = new JButton("Cancel");
+					this.add(CanButton);
+					this.add(PurchaseCancel);
 					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
 	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);

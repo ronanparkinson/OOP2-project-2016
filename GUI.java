@@ -3,10 +3,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextArea;
+//import javax.swing.JTextArea;
+import javax.swing.JOptionPane;
 //import javax.swing.SwingUtilities;
 
-public class GUI extends JFrame{	 
+public class GUI extends JFrame{
+	
+		ArrayList <Concert> Concerts = new ArrayList<Concert>();
+		ArrayList <Register> Customers = new ArrayList<Register>();
+		ArrayList <Purchase> Quantity = new ArrayList<Purchase>();
+	
+		 
 	public GUI(){
 		
 		super("Menu");		
@@ -77,14 +84,14 @@ public class GUI extends JFrame{
 	
 	private class ActionHandler extends JFrame implements ActionListener{
 			public void actionPerformed(ActionEvent e){
-			ArrayList <Concert> Concerts = new ArrayList<Concert>();
+		
 			String item = e.getActionCommand();	
-			JTextArea text;
+			String text = "";
 				
 			if(item.equals("Add Concert")){
 				
 				JFrame addWindow = new JFrame();
-				this.setSize(450, 350);
+				this.setSize(500, 350);
 				setLayout(new FlowLayout());
 				this.setVisible(true);
 				this.setTitle("Add a concert");
@@ -120,9 +127,18 @@ public class GUI extends JFrame{
 				JButton subCon = new JButton("Submit");	
 				subCon.setPreferredSize(new Dimension(100, 60));
 				this.add(subCon);
-				JButton canCon = new JButton("Cancel");	
-				canCon.setPreferredSize(new Dimension(100, 60));
-				this.add(canCon);		
+				subCon.addActionListener(new ActionHandler(){
+					public void actionPerformed(ActionEvent e){
+					
+					Concert thisConcert = new Concert(Cname.getText(), Ctype.getText(), venue.getText(), when.getText(), cap.getText());	
+					
+					Concerts.add(thisConcert);
+					
+					//String text = (Cname.getText() + Ctype.getText() + venue.getText() + when.getText() + cap.getText());
+					
+					JOptionPane.showMessageDialog(null,"You have added a Concert!","New Concert",JOptionPane.PLAIN_MESSAGE);	
+					}
+					});		
 				Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
     			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
     			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
@@ -152,10 +168,28 @@ public class GUI extends JFrame{
 					JButton subS = new JButton("Submit");	
 					subS.setPreferredSize(new Dimension(100, 60));
 					this.add(subS);
-					JButton canS = new JButton("Cancel");	
-					canS.setPreferredSize(new Dimension(100, 60));
-					this.add(canS);
-					
+					subS.addActionListener(new ActionHandler(){
+						public void actionPerformed(ActionEvent e){
+							
+							String conName = name.getText();
+							String dateStr = date.getText();
+							
+							for(int i=0;i<Concerts.size();i++)
+							{
+							   	Concert aConcert = Concerts.get(i);
+							   	
+							   	if(aConcert.getname().equals(conName) && aConcert.getdate().equals(dateStr))
+							   	{
+							   		JOptionPane.showMessageDialog(null, aConcert, "Results", JOptionPane.PLAIN_MESSAGE);
+							   		break;
+							   	}
+							}
+							
+							
+							//JOptionPane
+							}
+						}
+					);
 					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
 	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
@@ -176,12 +210,30 @@ public class GUI extends JFrame{
 					removeCon.setFont(font);
 					this.add(removeCon);
 					this.add(remove);
-					JButton removeButton = new JButton("Remove");
-					JButton removeCancel = new JButton("Cancel");
-					removeButton.setFont(font);
-					removeCancel.setFont(font);
+					JButton removeButton = new JButton("Remove");					
+					removeButton.setFont(font);					
 					this.add(removeButton);
-					this.add(removeCancel);
+					removeButton.addActionListener(new ActionHandler(){
+						public void actionPerformed(ActionEvent e){
+							
+							String ConName = remove.getText();
+							
+							for(int i = 0;i < Concerts.size();i++){
+							Concert rConcert = Concerts.get(i);
+							
+							if(rConcert.getname().equals(ConName)){
+								
+								Concerts.remove(i);
+								JOptionPane.showMessageDialog(null,"You have removed a concert!", "Concert Removed",JOptionPane.PLAIN_MESSAGE);
+								break; 
+								}		
+							}
+								
+						}
+						
+						
+					});
+										
 					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
 	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
@@ -217,11 +269,24 @@ public class GUI extends JFrame{
 					Addaddress.setFont(font);
 					Address.setFont(font);
 					JButton addButton = new JButton("Register");
-					JButton addCancel = new JButton("Cancel");
 					addButton.setFont(font);
-					addCancel.setFont(font);
 					this.add(addButton);
-					this.add(addCancel);
+					addButton.addActionListener(new ActionHandler(){
+						public void actionPerformed(ActionEvent e){
+							
+							
+							String name = add.getText();
+							String birth = DOB.getText();
+							String living = Address.getText();
+							
+							Register nCust = new Register(name, birth, living);
+							
+							Customers.add(nCust);
+							JOptionPane.showMessageDialog(null,nCust,"Customer registered!",JOptionPane.PLAIN_MESSAGE);
+							 
+						}
+					
+					});
 					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
 	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
@@ -250,11 +315,30 @@ public class GUI extends JFrame{
 					this.add(removeAddress);
 					this.add(removeAdd);
 					JButton RemoveButton = new JButton("Remove");
-					JButton ReCancel = new JButton("Cancel");
 					RemoveButton.setFont(font);
-					ReCancel.setFont(font);
 					this.add(RemoveButton);
-					this.add(ReCancel);
+					RemoveButton.addActionListener(new ActionHandler(){
+						public void actionPerformed(ActionEvent e){
+							
+							String Custname = remove.getText();
+							String address = removeAdd.getText();
+							
+							for(int i=0;i<Customers.size();i++)
+							{
+								
+							   	Register aCustomer = Customers.get(i);
+							   	
+							   	if(aCustomer.getname().equals(Custname) && aCustomer.getaddress().equals(address))
+							   	{
+							   		Customers.remove(i);
+							   		JOptionPane.showMessageDialog(null, "You have removed a customer!", "Customer Removed", JOptionPane.PLAIN_MESSAGE);
+							   		break;
+							   	}
+							}
+							
+						}	
+					});
+					
 					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
 	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
@@ -276,16 +360,27 @@ public class GUI extends JFrame{
 					BuyTicket.setFont(font);
 					this.add(BuyTic);
 					this.add(BuyTicket);
-					JLabel TicQuan= new JLabel("Please enter the Concert name: ");
-					JTextField TicketQuan = new JTextField(25);
+					JLabel TicQuan= new JLabel("Please enter the Number of tickets: ");
+					JTextField TicketQuan = new JTextField(20);
 					TicQuan.setFont(font);
 					TicketQuan.setFont(font);
 					this.add(TicQuan);
 					this.add(TicketQuan);
 					JButton purcButton = new JButton("Purchase");
-					JButton PurchaseCancel = new JButton("Cancel");
 					this.add(purcButton);
-					this.add(PurchaseCancel);
+					purcButton.addActionListener(new ActionHandler(){
+						public void actionPerformed(ActionEvent e){
+							
+							String name = BuyTicket.getText();
+							String Quant = TicketQuan.getText();
+								
+							Purchase bought = new Purchase(name, Quant);
+							Quantity.add(bought);
+							JOptionPane.showMessageDialog(null,bought,"Tickets purchased!",JOptionPane.PLAIN_MESSAGE);
+							
+						}
+						
+					});
 					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
 	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
@@ -313,16 +408,27 @@ public class GUI extends JFrame{
 					QuanTicket.setFont(font);
 					this.add(QuanTic);
 					this.add(QuanTicket);
-					JLabel CustName = new JLabel("Please enter your name: ");
-					JTextField CustomerName = new JTextField(25);
-					CustName.setFont(font);
-					CustomerName.setFont(font);
-					this.add(CustName);
-					this.add(CustomerName);
 					JButton CanButton = new JButton("Refund");
-					JButton PurchaseCancel = new JButton("Cancel");
 					this.add(CanButton);
-					this.add(PurchaseCancel);
+					CanButton.addActionListener(new ActionHandler(){
+						public void actionPerformed(ActionEvent e){
+							
+							//String Quant = QuanTicket.getText();
+							String name = CancelTicket.getText();
+							
+							for(int i=0; i<Quantity.size();i++){
+								
+								Purchase purch = Quantity.get(i);
+								
+								if(purch.getConcertName().equals(name)){
+									
+									Quantity.remove(i);
+									JOptionPane.showMessageDialog(null,"You Cancelled tickets!", "Tickets cancelled",JOptionPane.PLAIN_MESSAGE);
+									break;
+								}
+							} 	
+						}		
+					});
 					Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    			int x = (int) ((dimension.getWidth() - getWidth()) / 2);
 	    			int y = (int) ((dimension.getHeight() - getHeight()) / 2);
@@ -330,6 +436,8 @@ public class GUI extends JFrame{
 				}
 			}
 		}
+		
+		
 	}
 		
 	

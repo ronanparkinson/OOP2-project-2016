@@ -1,25 +1,22 @@
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-//import javax.swing.JTextArea;
-import javax.swing.JOptionPane;
-//import javax.swing.SwingUtilities;
+import java.awt.event.*;
+import java.io.*;
 
 public class GUI extends JFrame{
-	
-		ArrayList <Concert> Concerts = new ArrayList<Concert>();
-		ArrayList <Register> Customers = new ArrayList<Register>();
-		ArrayList <Purchase> Quantity = new ArrayList<Purchase>();
+
+		static ArrayList <Concert> Concerts = new ArrayList<Concert>();
+		static ArrayList <Register> Customers = new ArrayList<Register>();
+		static ArrayList <Purchase> Quantity = new ArrayList<Purchase>();
 	
 		 
 	public GUI(){
 		
 		super("Menu");		
 		JMenuBar menuBar = new JMenuBar();		
-		Container c = getContentPane();		
-		c.setBackground(Color.LIGHT_GRAY);
+		Container c = getContentPane();
+		c.setBackground(Color.BLACK);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(850,650);
 		setResizable(false);
@@ -34,15 +31,15 @@ public class GUI extends JFrame{
     	   	
     	JPanel title = new JPanel();
     	JLabel wel = new JLabel("Welcome to RPE");
-    	title.setBackground(Color.WHITE);
+    	title.setBackground(Color.blue);
     	wel.setFont(new Font("Sans Serif", Font.BOLD, 50));
-    	wel.setForeground(Color.BLUE);
+    	wel.setForeground(Color.yellow);
     	
     	JPanel center = new JPanel(new BorderLayout());
     	JLabel home = new JLabel("The Home of music entertainment");
-    	center.setBackground(Color.WHITE);
+    	center.setBackground(Color.blue);
     	home.setFont(new Font("Sans Serif", Font.PLAIN, 50));
-    	home.setForeground(Color.BLUE); 	   	
+    	home.setForeground(Color.yellow);
     	add(title);
     	setLayout(new FlowLayout()); 	
     	title.add(wel); 
@@ -78,17 +75,33 @@ public class GUI extends JFrame{
   		Purch.add(getTwo);
   		get.addActionListener(new ActionHandler());
   		getTwo.addActionListener(new ActionHandler());
-  		setJMenuBar(menuBar);	
-		
+
+
+        JMenu Tools = new JMenu("Tools");
+        menuBar.add(Tools);
+        JMenuItem save = new JMenuItem("Save");
+        Tools.add(save);
+        setJMenuBar(menuBar);
+        save.addActionListener(new ActionHandler());
 	}
-	
+
 	private class ActionHandler extends JFrame implements ActionListener{
 			public void actionPerformed(ActionEvent e){
 		
 			String item = e.getActionCommand();	
 			String text = "";
-				
-			if(item.equals("Add Concert")){
+
+                if(item.equals("Save")){
+                    // TODO: do that in writeA class.
+                    try {
+                        writeA(Concerts, Customers, Quantity);
+                    } catch (Exception e1) {
+                        e1.printStackTrace();
+                    }
+					JOptionPane.showMessageDialog(null, "Save Successful");
+                }
+
+                else if(item.equals("Add Concert")){
 				
 				JFrame addWindow = new JFrame();
 				this.setSize(500, 350);
@@ -136,7 +149,7 @@ public class GUI extends JFrame{
 					
 					//String text = (Cname.getText() + Ctype.getText() + venue.getText() + when.getText() + cap.getText());
 					
-					JOptionPane.showMessageDialog(null,"You have added a Concert!","New Concert",JOptionPane.PLAIN_MESSAGE);	
+					JOptionPane.showMessageDialog(null,"You have added a Concert!","New Concert",JOptionPane.PLAIN_MESSAGE);
 					}
 					});		
 				Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -438,7 +451,48 @@ public class GUI extends JFrame{
 		}
 		
 		
+	    public static void writeA(ArrayList <Concert> Concerts, ArrayList <Register> Customers, ArrayList <Purchase> Quantity) throws Exception{
+
+
+			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Project/project.dat"));
+			oos.writeObject(Concerts);
+			oos.writeObject(Customers);
+			oos.writeObject(Quantity);
+			oos.close();
+	    }
+		
+		public static void readA()throws Exception{
+	
+	try{
+		
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("project.dat"));
+
+		
+		Concerts= (ArrayList<Concert>) ois.readObject();
+		Customers= (ArrayList<Register>)ois.readObject();
+		Quantity= (ArrayList<Purchase>) ois.readObject();
+
+
+		ois.close();
+
+
 	}
+	catch(FileNotFoundException e){
+		
+		JOptionPane.showMessageDialog(null,"File not found!","Problem",JOptionPane.PLAIN_MESSAGE);
+        e.printStackTrace();
+	}
+
+	catch(Exception e){
+
+        JOptionPane.showMessageDialog(null,"Could not open!");
+        e.printStackTrace();
+    }
+	
+	
+		}
+	}
+
 		
 	
 		

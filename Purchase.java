@@ -1,14 +1,15 @@
 public class Purchase{
         
 	private String ConcertName;
-	private int quantity;
+	private String quantity;
+
 	
     public Purchase() {
-    	this("No concert", 0);
+    	this("No concert" ,"0");
     }
     
 
-    public Purchase(String ConcertName, int quantity){
+    public Purchase(String ConcertName, String quantity){
     	
         this.ConcertName = ConcertName;
         this.quantity = quantity;
@@ -19,7 +20,7 @@ public class Purchase{
     	this.ConcertName = ConcertName;
     }
     
-    public void setquantity(int quantity){
+    public void setquantity(String quantity){
     	
     	this.quantity = quantity;
     }
@@ -29,13 +30,13 @@ public class Purchase{
     	return ConcertName;
     }
     
-    public int getquantity(){
+    public String getquantity(){
     	
     	return quantity;
     }
     
    public String toString(){
    	
-   	return ("Concert name: " + getConcertName() + "Number of tickets: " + getquantity());
+   	return (" Concert name: " + getConcertName() + " Number of tickets: " + getquantity());
    }
 }

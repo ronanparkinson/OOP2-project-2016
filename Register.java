@@ -4,19 +4,17 @@ public class Register{
 	
 	private String name;
 	private String DOB;
-	private int age;
-     private final ArrayList <Register>Customer = new ArrayList<>();    
+	private String address;    
 
     public Register() {
-    	this("No name", "None", 0);
-    	Customer.add(this);
+    	this("No name", "None", "0");
     }
 
-    public Register(String name, String DOB, int age) {
+    public Register(String name, String DOB, String address) {
         
         this.name = name;
         this.DOB = DOB;
-        this.age = age;
+        this.address = address;
     }
     
     public void setname(String name){
@@ -29,9 +27,9 @@ public class Register{
     	this.DOB = DOB;
     }
     
-    public void setage(int age){
+    public void setage(String address){
     	
-    	this.age = age;
+    	this.address = address;
     }
     
     public String getname(){
@@ -44,13 +42,13 @@ public class Register{
     	return DOB;
     }
     
-    public int getage(){
+    public String getaddress(){
     	
-    	return age;
+    	return address;
     }
     
     public String toString(){
     	
-    	return ("Your name is: " + getname() + "Your Date of birth is: " + getDOB() + "Your age is: " + getage());
+    	return (" Your name is: " + getname() + " Your Date of birth is: " + getDOB() + " Your address is: " + getaddress());
     }
 }
